@@ -5,7 +5,7 @@
 data-raw
 
 # Shiny app
-apps.
+app.R
 
 # Scripts
 scripts
