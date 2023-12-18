@@ -3,3 +3,6 @@
 
 # Data
 data-raw
+
+# Docs
+**/docs/*.html
