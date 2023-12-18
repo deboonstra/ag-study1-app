@@ -1,6 +1,7 @@
 library(shiny)
 library(shinythemes)
 
+
 # Creating UI
 ui <- navbarPage(
   "",
@@ -76,9 +77,9 @@ ui <- navbarPage(
         sliderInput(
           inputId = "min_age",
           label = "Minimum Age",
-          min = min(dat$age),
-          max = max(dat$age),
-          value = median(dat$age),
+          min = min(agStudy1app::iwc_itr_only$age),
+          max = max(agStudy1app::iwc_itr_only$age),
+          value = median(agStudy1app::iwc_itr_only$age),
           step = 1
         ),
 
@@ -86,9 +87,9 @@ ui <- navbarPage(
         sliderInput(
           inputId = "max_age",
           label = "Maximum Age",
-          min = min(dat$age),
-          max = max(dat$age),
-          value = median(dat$age),
+          min = min(agStudy1app::iwc_itr_only$age),
+          max = max(agStudy1app::iwc_itr_only$age),
+          value = median(agStudy1app::iwc_itr_only$age),
           step = 1
         ),
 
