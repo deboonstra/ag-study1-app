@@ -176,7 +176,7 @@ pred_prob <- function(
   wc <- logit_predicted_probs(contrast = contrast2, est = pe2, vc = covv2)
 
   ## Trauma Registry
-  tr <- data.frame(prob = 1 - wc$prob, LB = 1 - wc$ub, UB = 1 - wc$lb)
+  tr <- data.frame(prob = 1 - wc$prob, lb = 1 - wc$ub, ub = 1 - wc$lb)
 
   # Finally, I'm combining everything together to be outputted
   res <- data.frame(
