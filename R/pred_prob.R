@@ -73,41 +73,41 @@ pred_prob <- function(
   ## Assigning correct contrast values ####
 
   ### Intercept ####
-  constrast$int <- 1
+  contrast$int <- 1
 
   ### Sex ####
   if (sex != "NULL") {
     if (sex == "Female") {
-      constrast$s_female <- 1
+      contrast$s_female <- 1
     } else if (sex == "Male") {
-      constrast$s_female <- -1
+      contrast$s_female <- -1
     }
   }
 
   ### Cause of injury ####
   if (cause != "NULL") {
     if (cause == "MVT") {
-      constrast$c_mvt <- 1
+      contrast$c_mvt <- 1
     } else if (cause == "Falls") {
-      constrast$c_falls <- 1
+      contrast$c_falls <- 1
     } else if (cause == "Fire/burn") {
-      constrast$c_fire <- 1
+      contrast$c_fire <- 1
     } else if (cause == "Cut/pierce or struck by/against") {
-      constrast$c_cut <- 1
+      contrast$c_cut <- 1
     } else if (cause == "Machinery") {
-      constrast$c_mach <- 1
+      contrast$c_mach <- 1
     } else if (cause == "Natural/Environment") {
-      constrast$c_nature <- 1
+      contrast$c_nature <- 1
     } else if (cause == "Missing/unspecified") {
-      constrast$c_miss <- 1
+      contrast$c_miss <- 1
     } else if (cause == "Other") {
-      constrast$c_cut <- -1
-      constrast$c_falls <- -1
-      constrast$c_fire <- -1
-      constrast$c_mvt <- -1
-      constrast$c_mach <- - 1
-      constrast$c_miss <- -1
-      constrast$c_nature <- -1
+      contrast$c_cut <- -1
+      contrast$c_falls <- -1
+      contrast$c_fire <- -1
+      contrast$c_mvt <- -1
+      contrast$c_mach <- - 1
+      contrast$c_miss <- -1
+      contrast$c_nature <- -1
     }
   }
 
@@ -115,27 +115,27 @@ pred_prob <- function(
   ### Nature of injury ####
   if (nature != "NULL") {
     if (nature == "Fractures/dislocation/sprains/strains") {
-      constrast$n_fx <- 1
+      contrast$n_fx <- 1
     } else if (nature == "Open Wound/superficial/continusion") {
-      constrast$n_open <- 1
+      contrast$n_open <- 1
     } else if (nature == "Burns") {
-      constrast$n_burns <- 1
+      contrast$n_burns <- 1
     } else if (nature == "Amputations") {
-      constrast$n_amp <- 1
+      contrast$n_amp <- 1
     } else if (nature == "Missing/unspecified") {
-      constrast$n_miss <- 1
+      contrast$n_miss <- 1
     } else if (nature == "Other") {
-      constrast$n_amp <- -1
-      constrast$n_burns <- -1
-      constrast$n_fx <- -1
-      constrast$n_miss <- -1
-      constrast$n_open <- -1
+      contrast$n_amp <- -1
+      contrast$n_burns <- -1
+      contrast$n_fx <- -1
+      contrast$n_miss <- -1
+      contrast$n_open <- -1
     }
   }
 
   ### Age ####
   if (!is.null(age)) {
-    constrast$age <- age
+    contrast$age <- age
   }
 
   # Converting to matrix form ####
@@ -155,7 +155,7 @@ pred_prob <- function(
     dimnames = list(names(pe), "estimate")
   )
 
-  ## Constrast (constrast) ####
+  ## contrast (contrast) ####
   contrast2 <- matrix(
     data = t(contrast),
     nrow = length(contrast), ncol = 1,
@@ -176,7 +176,7 @@ pred_prob <- function(
   wc <- logit_predicted_probs(contrast = contrast2, est = pe2, vc = covv2)
 
   ## Trauma Registry
-  tr <- data.frame(prob = 1 - wc$prob, LB = 1 - wc$UB, UB = 1 - wc$LB)
+  tr <- data.frame(prob = 1 - wc$prob, LB = 1 - wc$ub, UB = 1 - wc$lb)
 
   # Finally, I'm combining everything together to be outputted
   res <- data.frame(
