@@ -1,0 +1,14 @@
+Package: ag-study1-app
+Title: Supplementary package for the GPCAH Study 1 Web Application
+Version: 0.0.0.9000
+Authors@R: 
+  person(
+    "D. Erik", "Boonstra", role = c("aut", "cre"),
+    email = "daniel-boonstra@uiowa.edu",
+    comment = c(ORCID = "0009-0005-1599-1809")     
+  )
+Description: Contains a collection of R functions used to develop the R Shiny application for GPCAH Study 1. The primary function of this package is to calculate the predicted probability of an injury record being located in Iowa's Worker Compensation database or Iowa's Trauma Registry database.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
