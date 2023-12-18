@@ -1,14 +1,5 @@
-# License
 ^LICENSE\.md$
-
-# Data
-data-raw
-
-# Shiny app
-app.R
-
-# Scripts
-scripts
-
-# Documents
-docs
+^data-raw$
+^scripts$
+^docs$
+^app\.R$
