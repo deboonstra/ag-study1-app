@@ -67,8 +67,8 @@ pred_prob <- function(
   # produce a contrast statement
 
   ## Defining the initial contrast
-  contrast <- data.frame(t(rep(0, length(agStudy1app::pe))))
-  names(contrast) <- names(agStudy1app::pe)
+  contrast <- data.frame(t(rep(0, length(agstudy1app::pe))))
+  names(contrast) <- names(agstudy1app::pe)
 
   ## Assigning correct contrast values ####
 
@@ -150,9 +150,9 @@ pred_prob <- function(
 
   ## Point estimates (pe) ####
   pe2 <- matrix(
-    data = t(agStudy1app::pe),
-    nrow = length(agStudy1app::pe), ncol = 1,
-    dimnames = list(names(agStudy1app::pe), "estimate")
+    data = t(agstudy1app::pe),
+    nrow = length(agstudy1app::pe), ncol = 1,
+    dimnames = list(names(agstudy1app::pe), "estimate")
   )
 
   ## contrast (contrast) ####
@@ -163,7 +163,7 @@ pred_prob <- function(
   )
 
   ## Variance-covariance (covv) ####
-  covv2 <- as.matrix(agStudy1app::covv)
+  covv2 <- as.matrix(agstudy1app::covv)
 
   # Calculating predicted probabilities ####
   # Based on the modeling framework, probability of being in Workers'

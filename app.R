@@ -77,9 +77,9 @@ ui <- navbarPage(
         sliderInput(
           inputId = "min_age",
           label = "Minimum Age",
-          min = min(agStudy1app::iwc_itr_only$age),
-          max = max(agStudy1app::iwc_itr_only$age),
-          value = median(agStudy1app::iwc_itr_only$age),
+          min = min(agstudy1app::iwc_itr_only$age),
+          max = max(agstudy1app::iwc_itr_only$age),
+          value = median(agstudy1app::iwc_itr_only$age),
           step = 1
         ),
 
@@ -87,9 +87,9 @@ ui <- navbarPage(
         sliderInput(
           inputId = "max_age",
           label = "Maximum Age",
-          min = min(agStudy1app::iwc_itr_only$age),
-          max = max(agStudy1app::iwc_itr_only$age),
-          value = median(agStudy1app::iwc_itr_only$age),
+          min = min(agstudy1app::iwc_itr_only$age),
+          max = max(agstudy1app::iwc_itr_only$age),
+          value = median(agstudy1app::iwc_itr_only$age),
           step = 1
         ),
 

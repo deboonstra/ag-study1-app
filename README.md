@@ -3,5 +3,5 @@
 ## Installation
 ```r
 # install.packages("remotes")
-remotes::install_github("deboonstra/agStudy1app")
+remotes::install_github("deboonstra/agstudy1app")
 ```
