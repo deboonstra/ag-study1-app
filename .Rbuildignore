@@ -2,4 +2,4 @@
 ^data-raw$
 ^scripts$
 ^docs$
-^app\.R$
+^app$
