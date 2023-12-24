@@ -5,6 +5,9 @@ if (!("shiny" %in% installed.packages()[, 1])) {
 if (!("shinythemes" %in% installed.packages()[, 1])) {
   utils::install.packages("shinythemes")
 }
+if (!("remotes" %in% installed.packages()[, 1])) {
+  utils::install.packages("remotes")
+}
 if (!("agstudy1" %in% installed.packages()[, 1])) {
   remotes::install_github("deboonstra/agstudy1app")
 }
@@ -19,17 +22,6 @@ library(agstudy1app)
 ui <- navbarPage(
   "",
   theme = shinythemes::shinytheme("readable"),
-  navbarMenu(
-    "User guides",
-    tabPanel(
-      title = "Application User Guide",
-      includeHTML("./docs/app_guide.html")
-    ),
-    tabPanel(
-      title = "Detailed Overview of Modeling Framework",
-      includeHTML("./docs/modeling_overview.html")
-    )
-  ),
   tabPanel(
     title = "Predicted Probabilities",
     pageWithSidebar(
