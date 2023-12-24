@@ -8,7 +8,7 @@ if (!("shinythemes" %in% installed.packages()[, 1])) {
 if (!("remotes" %in% installed.packages()[, 1])) {
   utils::install.packages("remotes")
 }
-if (!("agstudy1" %in% installed.packages()[, 1])) {
+if (!("agstudy1app" %in% installed.packages()[, 1])) {
   remotes::install_github("deboonstra/agstudy1app")
 }
 
