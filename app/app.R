@@ -1,6 +1,19 @@
+# Checking packages
+if (!("shiny" %in% installed.packages()[, 1])) {
+  utils::install.packages("shiny")
+}
+if (!("shinythemes" %in% installed.packages()[, 1])) {
+  utils::install.packages("shinythemes")
+}
+if (!("agstudy1" %in% installed.packages()[, 1])) {
+  remotes::install_github("deboonstra/agstudy1app")
+}
+
+
+# Loading libraries
 library(shiny)
 library(shinythemes)
-
+library(agstudy1app)
 
 # Creating UI
 ui <- navbarPage(
