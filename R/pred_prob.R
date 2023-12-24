@@ -1,3 +1,57 @@
+#' Predicted probabilities for Iowa's Workers' Compensation and Iowa's Trauma
+#' Registry databases
+#'
+#' Calculates the predicted probabilities for an observation(s) to be located in
+#'  Iowa's Workers' Compensation (IWC) and Iowa's Trauma Registry (ITR) based on
+#' the sex, cause of injury, nature of injury, and age.
+#'
+#' @param sex A character value denoting the sex of the observation of interest.
+#' Valid parameter values are `"Female"`, `"Male"`, or `"NULL"` with the default
+#' being `"NULL"`.
+#' @param cause A character value denoting the cause of injury of the
+#' observation of interest. Valid parameter values are `"MVT"`, `"Falls"`,
+#' `"Fire/burn"`, `"Cut/pierces or struck by/against"`, `"Machinery"`,
+#' `"Natural/Environment"`, `"Missing/unspecified"`, `"Other"`, or `"NULL"` with
+#' the default being `"NULL"`.
+#' @param nature A character value denoting the nature of injury of the
+#' observation of interest. Valid parameter values are
+#' `"Fractures/dislocation/sprains/strains"`,
+#' `"Open Wound/superficial/contusion"`, `"Burns"`, `"Amputations"`,
+#' `"Missing/unspecified"`, `"Other"`, or `"NULL"` with the default value
+#' being `"NULL"`.
+#' @param age A numeric value denoting the age of the observation of interest
+#' with the default value being `NULL`.
+#'
+#' @details When a parameter is specified as the a null value
+#' (`"NULL"` or `NULL`) the "average" parameter value is used. This is possible
+#' because the logistic regression modeling construction used effects coding.
+#' The "average" value is related to the constrast value for the parameter
+#' being 0.
+#'
+#' The parameters `sex`, `cause`, and `nature` use a character representation
+#' of `"NULL"` because the purpose of this package and function is to help the
+#' web application for the GPCAH Surveillance project, which is based on
+#' [Shiny](https://shiny.posit.co).
+#'
+#' @return A `data.frame` with eight variables and two rows. The variables are:
+#' * `source`: the location of the observation of interest,
+#' `Workers' compensation` and `Trauma registry`,
+#' * `sex`: the sex of the observation of interest.
+#' * `cause`: the cause of injury of the observation of interest,
+#' * `nature`: the nature of injury of the observation of interest,
+#' * `age`: the age of the observation of interest,
+#' * `probability`: the predicted probabilities that the observation of interest
+#' is in the `Workers' compensation` and `Trauma registry` databases,
+#' * `lb`: the lower bound for the 95% confidence interval of the predicted
+#' probabilities, and
+#' * `ub`: the upper bound for the 95% confidence interval of the predicted
+#' probabilities.
+#'
+#' @examples
+#' pred_prob()
+#' pred_prob(sex = "Male", cause = "MVT", nature = "Burns", age = 45)
+#'
+#' @export pred_prob
 pred_prob <- function(
   sex = "NULL", cause = "NULL", nature = "NULL", age = NULL
 ) {
@@ -10,7 +64,7 @@ pred_prob <- function(
       stop(
         paste0(
           "The arguement sex must a string and only take one the",
-          " followingvalues:\n\t(1) Female\n\t(2) Male\n\t(3) NULL"
+          " followingvalues:\n\t(1) Female\n\t(2) Male\n\t(3) NULL\n"
         )
       )
     }
@@ -28,7 +82,7 @@ pred_prob <- function(
           "The arguement cause must a string and only take one the following",
           " values:\n\t(1) MVT\n\t(2) Falls\n\t(3) Fire/burn\n\t(4) Cut/pierce",
           " or struck by/against\n\t(5) Machinery\n\t(6) Natural/Environment",
-          "\n\t(7) Missing/unspecified\n\t(8) Other\n\t(9) NULL"
+          "\n\t(7) Missing/unspecified\n\t(8) Other\n\t(9) NULL\n"
         )
       )
     }
@@ -48,7 +102,7 @@ pred_prob <- function(
           " values:\n\t(1) Fractures/dislocation/sprains/strains",
           "\n\t(2) Open Wound/superficial/contusion\n\t(3) Burns",
           "\n\t(4) Amputations\n\t(5) Missing/unspecified",
-          "\n\t(6) Other\n\t(7) NULL"
+          "\n\t(6) Other\n\t(7) NULL\n"
         )
       )
     }
