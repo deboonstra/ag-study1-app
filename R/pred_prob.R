@@ -234,14 +234,14 @@ pred_prob <- function(
 
   # Finally, I'm combining everything together to be outputted
   res <- data.frame(
-    source = c("Workers' compensation", "Trauma registry"),
-    sex = ifelse(sex != "NULL", rep(sex, 2), rep("", 2)),
-    cause = ifelse(cause != "NULL", rep(cause, 2), rep("", 2)),
-    nature = ifelse(nature != "NULL", rep(nature, 2), rep("", 2)),
-    age = ifelse(!is.null(age), rep(contrast$age, 2), rep("", 2)),
-    probability = c(wc$prob, tr$prob),
-    lb = c(wc$lb, tr$lb),
-    ub = c(wc$ub, tr$ub)
+    Source = c("Workers' compensation", "Trauma registry"),
+    Sex = ifelse(sex != "NULL", rep(sex, 2), rep("", 2)),
+    Cause = ifelse(cause != "NULL", rep(cause, 2), rep("", 2)),
+    Nature = ifelse(nature != "NULL", rep(nature, 2), rep("", 2)),
+    Age = ifelse(!is.null(age), rep(contrast$age, 2), rep("", 2)),
+    Probability = c(wc$prob, tr$prob),
+    LB = c(wc$lb, tr$lb),
+    UB = c(wc$ub, tr$ub)
   )
 
   # Output predicted probabilities ####
