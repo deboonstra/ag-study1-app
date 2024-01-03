@@ -1,24 +1,32 @@
 ---
-title: "Detailed Overview of Modeling Framework"
-author: "Joe E. Cavanaugh and D. Erik Boonstra"
-output: md_document
+title: "..."
+output: html_fragment
 ---
 
-# Model overview
-We developed a logistic regression to probabilistically predict which data source captured an injured person, given their injury characteristics and demographics. The predictive model used explanatory variables found in both data sources: age, gender, injury cause, and injury nature, and modeled the event that an injured person’s information was recorded in the Workers’ Compensation data. For categorical predictors (gender, injury cause, and injury nature), we used effects coding instead of reference coding so that the average effect would be zero. To demonstrate how effect parameterization works, consider the variable sex, which has two levels (male and female). Different from reference coding, effects coding uses two parameters $\left(\beta^{S}_{M} \text{ and }\beta^{S}_{F}\right)$ to characterize the effect of sex. What allows one to "average over" the sex effect is that effect parameterization assumes that
-$$\beta^{S}_{M} + \beta^{S}_{F} = 0.$$ As seen in the accompanied *paper* to this application, the estimated sex effects are 0.3959 for females and -0.3959 for males, which sums to zero, as one would hope. The logistic regression model implemented this parameterization for the other categorical predictors (cause and nature of the injury). Cause of injury has a total of 8 levels and nature of injury has 6 levels which means
+# Detailed Overview of the Modeling Framework used in GPACH Surveillance of Agriculture Injuries in Iowa
+*Authors: Joseph E. Cavanaugh and D. Erik Boonstra*
+
+##  Model overview
+
+----
+
+We developed a logistic regression model to probabilistically predict which data source captured an injured person, given their injury characteristics and demographics. The predictive model used explanatory variables found in both data sources: age, gender, injury cause, and injury nature, and modeled the event that an injured person’s information was recorded in the Workers’ Compensation (WC) data. For categorical predictors (gender, injury cause, and injury nature), we used effects coding instead of reference coding, so that the average effect would be zero. To demonstrate how effect parameterization works, consider the variable sex, which has two levels (male and female). Different from reference coding, effects coding uses two parameters $\left(\beta^{S}_{M} \text{ and }\beta^{S}_{F}\right)$ to characterize the effect of sex. What allows one to "average over" the sex effect is that effect parameterization assumes that
+$$\beta^{S}_{M} + \beta^{S}_{F} = 0.$$ As seen in the accompanied paper, *Improving agricultural injury surveillance: comparing injuries captured Iowa’s Workers’ Compensation and trauma registry data*, to this web application the estimated sex effects are 0.3959 for females and -0.3959 for males, which sums to zero, as one would hope. The logistic regression model implemented this parameterization for the other categorical predictors (cause and nature of the injury). Cause of injury has a total of 8 levels and nature of injury has 6 levels which means
 $$
 \begin{aligned}
-\sum_{j = 1}^{8}\beta^{C}_{j} &= 0 \\
+\sum_{j = 1}^{8}\beta^{C}_{j} &= 0 \text{ and} \\
 \sum_{k = 1}^{6}\beta^{N}_{k} &= 0,
 \end{aligned}
 $$
 just as shown with the predictor sex.
 
-# Computation of predicted probabilities
+## Computation of predicted probabilities
+
+----
+
 Based on the predictive model, we estimated the probabilities of an agricultural injury being captured in either the trauma registry or workers' compensation repositories. Using the above notation: let $\hat{\alpha}$ denote the estimate of the model intercept term, $\hat{\beta}^{A}$ denote the estimate for age effect, and $\hat{\cdot}$ denote the estimates of $\beta^{S}_{i}, \beta^{C}_{j}, \text{ and } \beta^{N}_{k}$. Then, the probability that an injury case is predicted to be in Iowa's statewide workers' compensation database is
 $$\hat{\pi}(\mathbf{x}) = \frac{\exp\left(\hat{\alpha} + \hat{\beta}^{S}_{M}x^{S}_{M} + \hat{\beta}^{S}_{F}x^{S}_{F} + \hat{\beta}^{C}_{1}x^{C}_{1} + \ldots + \hat{\beta}^{C}_{8}x^{C}_{8} + \hat{\beta}^{N}_{1}x^{N}_{1} + \ldots + \hat{\beta}^{N}_{6}x^{N}_{6} + \hat{\beta}^{A}x^{A}\right)}{1 + \exp\left(\hat{\alpha} + \hat{\beta}^{S}_{M}x^{S}_{M} + \hat{\beta}^{S}_{F}x^{S}_{F} + \hat{\beta}^{C}_{1}x^{C}_{1} + \ldots + \hat{\beta}^{C}_{8}x^{C}_{8} + \hat{\beta}^{N}_{1}x^{N}_{1} + \ldots + \hat{\beta}^{N}_{6}x^{N}_{6} + \hat{\beta}^{A}x^{A}\right)},$$
 where $\mathbf{x}$ are the injury characteristics and demographics of interest. As an example, suppose the probability that an injury to a 45 year old male who fell and fractured a bone is in the workers' compensation database is of interest. Then,
 $$\hat{\pi}(\mathbf{x}_{0}) = \frac{\exp\left[\hat{\alpha} + \hat{\beta}^{S}_{M} + \hat{\beta}^{C}_{2} + \hat{\beta}^{N}_{1} + \hat{\beta}^{A}(45)\right]}{1 + \exp\left[\hat{\alpha} + \hat{\beta}^{S}_{M} + \hat{\beta}^{C}_{2} + \hat{\beta}^{N}_{1} + \hat{\beta}^{A}(45)\right]},$$
-where $x^{S}_{M} = 1$, $x^{C}_{2} = 1$, $x^{N}_{1} = 1$, $x^{A} = 45$, and remaining $x_{0}$'s are zeo. The probability this male's injury will be located in Iowa's trauma registry is simply $1- \hat{\pi}(\mathbf{x}_{0})$. Now if one only has a person's age, effects coding allows for "averaging over" the effects of sex, cause of injury, and nature of injury in the calculation of the predicted probability. The chance this person is in WC is
+where $x^{S}_{M} = 1$, $x^{C}_{2} = 1$, $x^{N}_{1} = 1$, $x^{A} = 45$, and remaining $x_{0}$'s are zeo. The probability this injury will be located in Iowa's trauma registry is simply $1- \hat{\pi}(\mathbf{x}_{0})$. Now if one only has the age of a person, effects coding allows for "averaging over" the effects of sex, cause of injury, and nature of injury in the calculation of the predicted probability. The chance this person is in WC is
 $$\hat{\pi}(\mathbf{x}) = \frac{\exp\left(\hat{\alpha} + \hat{\beta}^{A}x^{A}\right)}{1 + \exp\left(\hat{\alpha} + \hat{\beta}^{A}x^{A}\right)}.$$
