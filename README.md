@@ -11,8 +11,6 @@ Surveillance of Agriculture Injuries in Iowa Web Application.
 You can install the development version of agstudy1app from
 [GitHub](https://github.com/deboonstra/agstudy1app/tree/main) with:
 
-## Installation
-
 ``` r
 # install.packages("remotes")
 remotes::install_github("deboonstra/agstudy1app")
