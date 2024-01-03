@@ -20,8 +20,16 @@ library(agstudy1app)
 
 # Creating UI
 ui <- navbarPage(
-  "",
+  "GPACH Surveillance of Agriculture Injuries in Iowa",
   theme = shinythemes::shinytheme("readable"),
+  tabPanel(
+    title = "Application User Guide",
+    withMathJax(includeHTML("./docs/app_guide.html"))
+  ),
+  tabPanel(
+    title = "Modeling overview",
+    withMathJax(includeHTML("./docs/modeling_overview.html"))
+  ),
   tabPanel(
     title = "Predicted Probabilities",
     pageWithSidebar(
