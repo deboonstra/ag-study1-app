@@ -1,0 +1,129 @@
+
+
+
+<div id="web-application-user-guide" class="section level1">
+<h1>Web Application User Guide</h1>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<hr />
+<p>When the web application is launched from <em>Improving agricultural
+injury surveillance: comparing injuries captured Iowa’s Workers’
+Compensation and trauma registry data</em>, one will be initially
+directed to a couple of user guides. The first guide, titled <em>Web
+Application User Guide</em> is this current page, provides a quick
+overview of the modeling framework and a detailed description of the
+inner workings of the application. Navigate to the <em>Modeling
+Framework</em> tab for see a more detailed description of the model
+construction and the calculations of the predicted probabilities. Access
+to the web application can be found in the <em>Web Application</em> tab.
+This application loads a <a href="https://shiny.posit.co">Posit
+Shiny</a> application that calculates the predicted probabilities of
+being in Iowa’s Workers’ Compensation database and Iowa’s Trauma
+Registry. Remaining information in this guides provides details on how
+the web application works. First, a quick overview of the model used to
+calculate the predicted probabilities is provided to enhance the
+understanding of the application basics.</p>
+</div>
+<div id="model-overview" class="section level2">
+<h2>Model overview</h2>
+<hr />
+<p>We developed a logistic regression model to probabilistically predict
+which data source captured an injured person, given their injury
+characteristics and demographics. The predictive model used explanatory
+variables found in both data sources: age, gender, injury cause, and
+injury nature, and modeled the event that an injured person’s
+information was recorded in the Workers’ Compensation data. For
+categorical predictors (gender, injury cause, and injury nature), we
+used effects coding instead of reference coding, so the average effect
+would be zero.</p>
+</div>
+<div id="application-launch" class="section level2">
+<h2>Application launch</h2>
+<hr />
+<p>The <em>Web Application</em> tab launches the application to
+calculate the predicted probabilities of being in Iowa’s Workers’
+Compensation database and Trauma Registry. The application has two
+panels. The left panel receives the input from the user, while the right
+panel displays the results based on the information given. For this
+application, predicted probabilities are calculated based on sex, age,
+and cause and nature of the injury. The starting values for sex, cause
+of injury, and nature of the injury are <strong><em>Average of
+effect</em></strong>. This value is a by-product of effects coding in
+the modeling framework, allowing probabilities to be calculated while
+averaging all the possible values for the predictors. So, at any time,
+if one wants to obtain a predicted probability or a set of predicted
+probabilities while considering an average effect of a categorical
+variable, then select the <strong><em>Average of effect</em></strong>
+option for the variable of interest. Initially, the age of a person’s is
+excluded in the probability calculation.</p>
+</div>
+<div id="application-useage" class="section level2">
+<h2>Application Useage</h2>
+<hr />
+<div id="user-inputs" class="section level3">
+<h3>User inputs</h3>
+<p>The left panel of the application takes a select set of inputs from
+the user. There is a drop-down menu of all possible choices for the
+categorical variables (sex, cause of injury, and nature of injury). For
+the purpose of exploring the user inputs, consider the following
+example. Suppose one is interested in finding the predicted probability
+that a male who fell and fractured his arm is in the workers’
+compensation database. Then, all one would need to do is select
+<strong><em>Male</em></strong> in the <strong>Sex</strong> drop-down
+menu, <strong><em>Falls</em></strong> in the <strong>Cause of
+Injury</strong> drop-down menu, and
+<strong><em>Fractures/dislocation/sprains/strains</em></strong> in the
+<strong>Nature of Injury</strong> drop-down menu. Age is the only
+quantitative variable in the model and application. For specifying age,
+there are two age sliders titled <strong>Minimum</strong> and
+<strong>Maximum Age</strong> and a checkbox denoting whether age should
+be included in the probability calculation. If age is of interest, then
+there are several points to consider. First, the <strong><em>Include age
+in calculation of predicted probabilities</em></strong> checkbox must be
+selected. Second, the minimum and maximum age must be set to some value
+within the range of possible ages. By default, the minimum and maximum
+ages are set to 45, the mean and median age of the combined data
+sources. Suppose the two age sliders are assigned to different values,
+and the checkbox indicating whether multiple predicted probabilities
+should be calculated is not marked. In that case, the age used is the
+average of the minimum and maximum age selected. Next, to obtain a range
+of predicted probabilities over various ages, the <strong><em>Calculate
+multiple predicted probabilities</em></strong> checkbox must be
+selected, and the minimum and maximum ages must differ. The application
+will flip the two ages assigned in the background if the minimum age
+exceeds the maximum. Combining all the above steps for specifying injury
+characteristics and demographics will provide predicted probabilities
+specific to those characteristics of interest.</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<p>Regardless of the injury characteristics and demographics specified
+in the user input panel, the results section (right panel) will have the
+same general setup. There will be columns denoting the data source of
+the injury case (<code>Source</code>), sex (<code>Sex</code>), cause of
+injury (<code>Cause</code>), nature of injury (<code>Nature</code>), age
+(<code>Age</code>), predicted probability (<code>Probability</code>),
+and <span class="math inline">\(95\%\)</span> Wald confidence interval
+(<code>LB</code> and <code>UB</code>). By default, sex, age, cause, and
+nature of the injury will have empty fields. This occurs because the
+categorical variables have initial values of <strong><em>Average of
+effect</em></strong>, and age is not denoted to be included in the
+calculation. Probabilities for Iowa’s Workers’ Compensation database
+(<code>Workers&#39; compensation</code>) and Trauma Registry
+(<code>Trauma registry</code>) are displayed for each probability
+calculation. As injury characteristics and demographics are defined,
+their associated columns in the results section will be filled in, and
+the probabilities (predicted and confidence interval) will be
+updated.</p>
+</div>
+</div>
+<div id="on-device-useage-of-web-application" class="section level2">
+<h2>On-device useage of web application</h2>
+<hr />
+<p>Currently, the web application does not allow the user to download
+the predicted probabilities calculated. Therefore, obtain the
+probabilities for external use, installation of the <a href="https://github.com/deboonstra/agstudy1app"><code>agstudy1app</code></a>
+is required. Then, simply call the <code>agstudy1app::pred_prob()</code>
+function with the injury characteristics of interest.</p>
+</div>
+</div>
