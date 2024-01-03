@@ -22,7 +22,7 @@ library(agstudy1app)
 # Creating UI
 
 ui <- navbarPage(
-  "GPACH Surveillance of Agriculture Injuries in Iowa",
+  title = "GPACH Surveillance of Agriculture Injuries in Iowa",
   theme = shinythemes::shinytheme("flatly"),
   tabPanel(
     title = "Application User Guide",
