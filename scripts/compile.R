@@ -1,1 +1,0 @@
-boonstra::render_all()
