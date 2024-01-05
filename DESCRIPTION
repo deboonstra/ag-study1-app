@@ -1,6 +1,6 @@
 Package: agstudy1app
 Title: Supplementary package for the GPCAH Surveillance of Agriculture Injuries in Iowa Web Application
-Version: 0.0.0.9000
+Version: 1.0
 Authors@R: 
   person(
     "D. Erik", "Boonstra", role = c("aut", "cre"),
