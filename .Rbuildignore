@@ -6,3 +6,4 @@
 ^makefile$
 ^README\.Rmd$
 ^app\.R$
+^_disable.autoload\.R$
