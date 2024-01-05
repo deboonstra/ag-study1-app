@@ -89,5 +89,4 @@ server <- function(input, output) {
       )
     }
   })
-  return(output$view)
 }
