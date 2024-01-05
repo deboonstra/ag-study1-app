@@ -15,3 +15,8 @@ RoxygenNote: 7.2.3
 LazyData: true
 Depends:
   R (>= 3.5.0)
+Imports:
+  shiny,
+  shinythemes,
+  stats
+URL: https://ph-ivshiny.iowa.uiowa.edu/deboonstra/agstudy1app/
