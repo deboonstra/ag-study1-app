@@ -10,11 +10,16 @@
 A data frame with 5,817 rows and 6 columns:
 \describe{
 \item{obs_final}{The observation number from the combined data}
-\item{sex}{Sex of record with F denoting female and M denoting male}
+\item{sex}{Sex of record: F = Female, M = Male}
 \item{age}{Age of recrod}
-\item{cause_ov}{Numeric code for cause of injury}
-\item{nature_ov}{Numeric code for nature of injury}
-\item{match}{Numeric code for origin location of record with 0 denoting ITR and 1 denoting IWC}
+\item{cause_ov}{Numeric code for cause of injury: 1 = MVT, 2 = Falls,
+3 = Fire/burn, 4 = Cut/pierce or struck by/against, 5 = Machinery,
+6 = Natural/environment, 7 = Other, 8 = Missing/unspecified}
+\item{nature_ov}{Numeric code for nature of injury:
+1 = Fractures/dislocation/sprains/strains,
+2 = Open Wound/superficial/contusion, 3 = Burns, 4 = Amputations,
+5 = Other, 6 = Missing/unspecified}
+\item{match}{Numeric code for origin location of record: 0 = ITR, 1 = IWC}
 }
 }
 }
