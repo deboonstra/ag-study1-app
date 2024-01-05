@@ -11,7 +11,7 @@
 #' @seealso [shiny::shinyApp()], [shiny::runApp()]
 #'
 #' @export app
-app <- function(ui = agstudy1app::ui, server = agstudy1app::server) {
+app <- function(ui = agstudy1app::ui(), server = agstudy1app::server()) {
   require(shiny)
   require(shinythemes)
   app <- shiny::shinyApp(ui = ui, server = server)
