@@ -48,7 +48,7 @@ server <- function(input, output) {
 
       #### Calculating predicted probabilities
       if (length(age_seq) == 1) {
-        pred_prob(
+        agstudy1app::pred_prob(
           sex = input$sex,
           cause = input$cause,
           nature = input$nature,
@@ -58,7 +58,7 @@ server <- function(input, output) {
         hold <- lapply(
           X = seq_along(age_seq),
           FUN = function(i) {
-            pred_prob(
+            agstudy1app::pred_prob(
               sex = input$sex,
               cause = input$cause,
               nature = input$nature,
@@ -69,7 +69,7 @@ server <- function(input, output) {
         dplyr::bind_rows(hold)
       }
     } else {
-      pred_prob(
+      agstudy1app::pred_prob(
         sex = input$sex,
         cause = input$cause,
         nature = input$nature,
