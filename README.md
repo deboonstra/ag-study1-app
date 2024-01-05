@@ -46,16 +46,16 @@ document for `pred_prob`.
 
 Currently, the web application does not allow the user to download the
 predicted probabilities calculated. Therefore, to obtain the
-probabilities for external use, installation of the
-[`agstudy1app`](https://github.com/deboonstra/agstudy1app) package is
-required. Then, simply call the `agstudy1app::pred_prob()` function with
-the injury characteristics of interest. If one choose to run the web
-application on their local machine, they will need to `git clone` the
+probabilities for external use, installation of the `agstudy1app`,
+<https://github.com/deboonstra/agstudy1app>, package is required. Then,
+simply call the `agstudy1app::pred_prob()` function with the injury
+characteristics of interest. If one choose to run the web application on
+their local machine, they will need to `git clone` the
 [`agstudy1app`](https://github.com/deboonstra/agstudy1app) repository to
 their desired location. Then, in an interactive session of *R*, where
 `agstudy1app` is the current working directory, execute the following
 command.
 
 ``` r
-agstudy1app::app()
+agstudy1app::launch()
 ```

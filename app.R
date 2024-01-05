@@ -4,4 +4,4 @@ library(shinythemes)
 library(agstudy1app)
 
 # Running app ####
-agstudy1app::app()
+agstudy1app::launch()
