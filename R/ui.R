@@ -4,7 +4,7 @@
 #' includes an application user guide, an overview of the modeling framework,
 #' and the web application.
 #'
-#' @details The UI depende on [shiny::navbarPage()] to create the navigation
+#' @details The UI depends on [shiny::navbarPage()] to create the navigation
 #' bar page and [shinythemes::shinytheme()] to define the
 #' [Bootswatch](https://bootswatch.com) theme of the application.
 #'

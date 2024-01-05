@@ -19,7 +19,7 @@ includes an application user guide, an overview of the modeling framework,
 and the web application.
 }
 \details{
-The UI depende on \code{\link[shiny:navbarPage]{shiny::navbarPage()}} to create the navigation
+The UI depends on \code{\link[shiny:navbarPage]{shiny::navbarPage()}} to create the navigation
 bar page and \code{\link[shinythemes:shinytheme]{shinythemes::shinytheme()}} to define the
 \href{https://bootswatch.com}{Bootswatch} theme of the application.
 
