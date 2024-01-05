@@ -3,12 +3,13 @@
 
 # agstudy1app – GPACH Surveillance of Agriculture Injuries in Iowa Web Application Package
 
-The goal of agstudy1app is to be a supplementary package for the GPCAH
-Surveillance of Agriculture Injuries in Iowa Web Application.
+The goal of `agstudy1app` is to be a supplementary package for the GPCAH
+Surveillance of Agriculture Injuries in Iowa Web Application,
+<https://ph-ivshiny.iowa.uiowa.edu/deboonstra/agstudy1app/>.
 
 ## Installation
 
-You can install the development version of agstudy1app from
+You can install the development version of `agstudy1app` package from
 [GitHub](https://github.com/deboonstra/agstudy1app/tree/main) with:
 
 ``` r
@@ -24,13 +25,13 @@ probabilities of a forty-five year old injured person using the
 
 ``` r
 library(agstudy1app)
-agstudy1app::pred_prob(age = mean(agstudy1app::iwc_itr_only$age))
+agstudy1app::pred_prob(age = 45)
 ```
 
-| Source                | Sex | Cause | Nature |      Age | Probability |        LB |        UB |
-|:----------------------|:----|:------|:-------|---------:|------------:|----------:|----------:|
-| Workers’ compensation |     |       |        | 44.69383 |   0.5778771 | 0.5437128 | 0.6113121 |
-| Trauma registry       |     |       |        | 44.69383 |   0.4221229 | 0.3886879 | 0.4562872 |
+| Source                | Sex | Cause | Nature | Age | Probability |        LB |        UB |
+|:----------------------|:----|:------|:-------|----:|------------:|----------:|----------:|
+| Workers’ compensation |     |       |        |  45 |   0.5753956 | 0.5411740 | 0.6089094 |
+| Trauma registry       |     |       |        |  45 |   0.4246044 | 0.3910906 | 0.4588260 |
 
 ### Parameter values
 
@@ -39,4 +40,22 @@ document for `pred_prob`.
 
 ``` r
 ?agstudy1app::pred_prob()
+```
+
+## On-device useage of web application
+
+Currently, the web application does not allow the user to download the
+predicted probabilities calculated. Therefore, to obtain the
+probabilities for external use, installation of the
+[`agstudy1app`](https://github.com/deboonstra/agstudy1app) package is
+required. Then, simply call the `agstudy1app::pred_prob()` function with
+the injury characteristics of interest. If one choose to run the web
+application on their local machine, they will need to `git clone` the
+[`agstudy1app`](https://github.com/deboonstra/agstudy1app) repository to
+their desired location. Then, in an interactive session of *R*, where
+`agstudy1app` is the current working directory, execute the following
+command.
+
+``` r
+agstudy1app::app()
 ```

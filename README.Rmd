@@ -15,13 +15,13 @@ knitr::opts_chunk$set(
 
 # agstudy1app -- GPACH Surveillance of Agriculture Injuries in Iowa Web Application Package
 
-The goal of agstudy1app is to be a supplementary package for the GPCAH Surveillance of Agriculture Injuries in Iowa Web Application.
+The goal of `agstudy1app` is to be a supplementary package for the GPCAH Surveillance of Agriculture Injuries in Iowa Web Application, https://ph-ivshiny.iowa.uiowa.edu/deboonstra/agstudy1app/.
 
 ## Installation
 
-You can install the development version of agstudy1app from [GitHub](https://github.com/deboonstra/agstudy1app/tree/main) with:
+You can install the development version of `agstudy1app` package from [GitHub](https://github.com/deboonstra/agstudy1app/tree/main) with:
 
-```r
+```{r, eval = FALSE}
 # install.packages("remotes")
 remotes::install_github("deboonstra/agstudy1app")
 ```
@@ -32,12 +32,12 @@ This is a basic example which shows you how to calculate the predicted probabili
 
 ```{r, eval = FALSE}
 library(agstudy1app)
-agstudy1app::pred_prob(age = mean(agstudy1app::iwc_itr_only$age))
+agstudy1app::pred_prob(age = 45)
 ```
 ```{r, eval = TRUE, echo = FALSE}
 library(agstudy1app)
 library(knitr)
-tab <- agstudy1app::pred_prob(age = mean(agstudy1app::iwc_itr_only$age))
+tab <- agstudy1app::pred_prob(age = 45)
 knitr::kable(x = tab, format = "pipe")
 ```
 
@@ -45,4 +45,12 @@ knitr::kable(x = tab, format = "pipe")
 The possible valid injury characteristics are listed in the help document for `pred_prob`.
 ```{r, eval = FALSE}
 ?agstudy1app::pred_prob()
+```
+
+## On-device useage of web application
+
+Currently, the web application does not allow the user to download the predicted probabilities calculated. Therefore, to obtain the probabilities for external use, installation of the [`agstudy1app`](https://github.com/deboonstra/agstudy1app) package is required. Then, simply call the `agstudy1app::pred_prob()` function with the injury characteristics of interest. If one choose to run the web application on their local machine, they will need to `git clone` the [`agstudy1app`](https://github.com/deboonstra/agstudy1app) repository to their desired location. Then, in an interactive session of *R*, where `agstudy1app` is the current working directory, execute the following command.
+
+```{r, eval = FALSE}
+agstudy1app::app()
 ```

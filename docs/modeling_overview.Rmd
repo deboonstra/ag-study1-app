@@ -18,7 +18,7 @@ $$
 \sum_{k = 1}^{6}\beta^{N}_{k} &= 0,
 \end{aligned}
 $$
-just as shown with the predictor sex. For more information on the specific levels on the cause and nature injury of variables see the `R` documentation for `?agstudy1app::iwc_itr_only`.
+just as shown with the predictor sex. For more information on the specific levels on the cause and nature injury of variables see the *R* documentation for `?agstudy1app::iwc_itr_only`.
 
 ## Computation of predicted probabilities
 
