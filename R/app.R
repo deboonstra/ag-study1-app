@@ -16,5 +16,5 @@ app <- function(ui = agstudy1app::ui, server = agstudy1app::server) {
   require(shinythemes)
   app <- shiny::shinyApp(ui = ui, server = server)
   options(shiny.autoload.r = FALSE) # not loading R/ sub-directory
-  shiny::runApp(app)
+  shiny::runApp(app, launch.browser = TRUE, quiet = TRUE)
 }
