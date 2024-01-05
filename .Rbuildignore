@@ -6,3 +6,4 @@
 ^explore$
 ^makefile$
 ^README\.Rmd$
+^app\.R$
