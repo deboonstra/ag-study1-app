@@ -11,7 +11,8 @@ An object of class \code{shiny.tag.list} (inherits from \code{list}) of length 4
 ui
 }
 \value{
-A \code{view} document created by \code{\link[shiny:navbarPage]{shiny::navbarPage()}}.
+A \code{list} created by \code{\link[shiny:navbarPage]{shiny::navbarPage()}} containing HTML metadata to
+be used by \link{server}.
 }
 \description{
 Creates the UI for the web application based on navigation bar page that
