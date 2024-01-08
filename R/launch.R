@@ -21,6 +21,6 @@ launch <- function() {
   test2 <- file.exists("./docs/modeling_overview.html")
   if (test1 && test2) {
     options(shiny.autoload.r = FALSE)
-    shiny::runApp(app, launch.browser = TRUE, quiet = TRUE)
+    shiny::runApp(app)
   }
 }
