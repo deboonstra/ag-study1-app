@@ -16,11 +16,12 @@
 #'
 #' @export launch
 launch <- function() {
-  app <- shiny::shinyApp(ui = agstudy1app::ui(), server = agstudy1app::server)
+  ui <- agstudy1app::ui()
+  server <- agstudy1app::server
   test1 <- file.exists("./docs/app_guide.html")
   test2 <- file.exists("./docs/modeling_overview.html")
   if (test1 && test2) {
     options(shiny.autoload.r = FALSE)
-    shiny::runApp(app)
+    shiny::shinyApp(ui = ui, server = server)
   }
 }
