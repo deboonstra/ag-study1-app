@@ -15,8 +15,6 @@
 #' }
 #'
 #' @export launch
-launch <- function(ui = agstudy1app::ui, server = agstudy1app::server) {
-  app <- shiny::shinyApp(ui = ui, server = server)
-  options(shiny.autoload.r = FALSE)
-  shiny::runApp(app)
+launch <- function() {
+  shiny::runApp(appDir = ".")
 }
